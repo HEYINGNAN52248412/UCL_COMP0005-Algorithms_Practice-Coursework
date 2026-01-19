@@ -1,7 +1,9 @@
-id=list(range(10))
+id = list(range(10))
+size = [1]*10
 
 def root (i):
     while id[i] != i:
+        id[i] = id[id[i]]
         i = id[i]
     return i
 
@@ -15,7 +17,7 @@ def union (u,v):
     u_root = root(u)
     v_root = root(v)
 
-    id[u_root] = v_root
-
-#max depth: N(array)
-
+    if size[u_root]>size[v_root]:
+        id[v_root] = u_root
+    else:
+        id[v_root] = u_root
